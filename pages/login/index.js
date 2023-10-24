@@ -54,6 +54,7 @@ export default function Login() {
             onChange={(e) => {
               formHandleEdit(e, "email");
             }}
+            value={formData.email}
             required
           ></Input>
           <Input
@@ -63,6 +64,7 @@ export default function Login() {
               formHandleEdit(e, "password");
             }}
             required
+            value={formData.password}
           ></Input>
           <Button>Entrar</Button>
           {error && <p className={styles.error}>{error}</p>}
