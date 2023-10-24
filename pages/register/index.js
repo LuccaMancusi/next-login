@@ -4,6 +4,8 @@ import styles from "../../styles/Login.module.css";
 import Input from "../../src/components/input/input";
 import Button from "../../src/components/button/button";
 import Link from "next/link";
+import { setCookie } from "cookies-next";
+import { useRouter } from "next/router";
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -11,6 +13,8 @@ export default function Register() {
     email: "",
     password: "",
   });
+
+  const router = useRouter();
 
   const [error, setError] = useState("");
 
@@ -32,6 +36,10 @@ export default function Register() {
       const json = await response.json();
       console.log(response.status);
       if (response.status !== 201) throw new Error(json);
+
+      setCookie("Authorization", json);
+
+      router.push("/");
     } catch (err) {
       setError(err.message);
     }
