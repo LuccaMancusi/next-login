@@ -34,7 +34,6 @@ export default function Register() {
         body: JSON.stringify(formData),
       });
       const json = await response.json();
-      console.log(response.status);
       if (response.status !== 201) throw new Error(json);
 
       setCookie("Authorization", json);

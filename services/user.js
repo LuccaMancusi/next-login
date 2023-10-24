@@ -16,6 +16,10 @@ function readToken(token) {
   }
 }
 
+export function verifyToken(token) {
+  return readToken(token);
+}
+
 export function register(body) {
   const user = users.find(({ email }) => email === body.email);
   if (user) throw new Error("Usuário já cadastrado");
